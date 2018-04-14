@@ -1,0 +1,88 @@
+/* ---------------------------------------------------
+    SIDEBAR STYLE
+----------------------------------------------------- */
+#sidebar-wrapper {
+    z-index: 1;
+    position: absolute;
+    width: 0;
+    height: 100%;
+    background: #0C8542;
+    color: #fff;
+    overflow-y: hidden;
+    /*opacity: 0.9%;*/
+}
+#search-text {
+    width: 250px;
+    height: 70px;
+    color: #0f0f0f;
+}
+.sidebar-nav {
+    padding: 0;
+    list-style: none;
+}
+
+.sidebar-nav li {
+    padding-top: 30px;
+    display: block;
+    text-decoration: none;
+    /*color: #0EBFE9;*/
+}
+
+.sidebar-nav li:hover{
+    text-indent: 20px;
+    line-height: 40px;
+    background: #1d9b28;
+}
+/* ---------------------------------------------------
+    MAP STYLE
+----------------------------------------------------- */
+#page-content-wrapper {
+  left: 0;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+}
+
+#heading {
+    /*left: 0;
+    width: 10%;*/
+    background: #0C8542;
+    color: #ffffff;
+}
+
+#head-title {
+    text-align: center;
+    background: #0C8542;
+    color: #ffffff;
+}
+
+#toggle-menu {
+    margin-top: 10px;
+}
+
+#map {
+    bottom:0;
+    top: 70px;
+    height: 100%;
+    padding-left: 0;
+    position: absolute;
+    right: 0;
+    width: 100%;
+}
+
+#pano {
+    width: 200px;
+    height: 200px;
+}
+
+#wrapper.MenuDisplayed #sidebar-wrapper {
+    width: 250px;
+}
+
+#wrapper.MenuDisplayed #page-content-wrapper{
+    padding-left: 250px;
+}
+
+#wrapper.MenuDisplayed #map{
+    padding-left: 250px;
+}

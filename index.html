@@ -1,0 +1,57 @@
+<!-- This is the corresponding "starter code" for 05_Interpreting Geocoding Responses in Udacity
+and Google's Maps API Course, Lesson 2 -->
+<!DOCTYPE HTML5>
+<html>
+    <head>
+        <title>Neighborhood Map</title>
+        <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+        <!-- jQuery CDN -->
+        <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+        <!-- Bootstrap Js CDN -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="css/styles.css">
+
+    </head>
+
+    <body>
+        <div id="wrapper">
+            <div id="sidebar-wrapper">
+                <div>
+                    <input id="search-text" data-bind="textInput: query, valueUpdate:'afterkeydown'" placeholder="Please select attraction from below list">
+                </div>
+                <ul class="sidebar-nav" data-bind ="foreach:filteredLoc">
+                    <li data-bind ="text: title, click:$parent.getMarker"></li>
+                </ul >
+            </div>
+
+            <div id="page-content-wrapper">
+                <div class="container-fluid">
+                    <div class="row" id="heading">
+                        <div class="col-md-3">
+                            <a href="#" class="btn btn-success" id="toggle-menu">Toggle Menu</a>
+                        </div>
+                        <div class="col-md-6" id="head-title">
+                            <h1>New York Tourist Map</h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12" id="map"></div>
+            </div>
+        </div>
+        <script src="js/lib/ko.js"></script>
+        <script src="js/app.js"></script>
+        <script>
+            $("#toggle-menu").click(function (e) {
+              e.preventDefault();
+              $("#wrapper").toggleClass("MenuDisplayed");
+            });
+        </script>
+        <script async defer
+            src="https://maps.googleapis.com/maps/api/js?v=3&key=AIzaSyAKun8wQp1HyvBmScVMthAoCev-gqgHU4c&libraries=geometry&callback=initMap" onerror="mapLoadError()">
+        </script>
+    </body>
+</html>
