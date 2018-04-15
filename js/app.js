@@ -113,18 +113,18 @@ let ViewModel = function() {
     this.markerList = ko.observableArray([]);
     this.locFilter = ko.observable();
 
-    let marker = function(data,map) {
+    let Marker = function(data,map) {
         this.title = data.title;
         this.location = data.location;
     };
 
     initLocn.forEach(function(locnItem){
-        self.markerList.push(new marker(locnItem));
+        self.markerList.push(new Marker(locnItem));
     });
     
     this.markerList().forEach(function(marker){
         marker = new google.maps.Marker({
-            position: marker.location, 
+            position: marker.location,
             title: marker.title,
             draggable: true,
             animation: google.maps.Animation.DROP,
@@ -136,8 +136,6 @@ let ViewModel = function() {
         bounds.extend(marker.position);
         map.fitBounds(bounds);
     
-        document.getElementById('search-text').addEventListener('click', showListings);
-
         marker.addListener('click', function() {
             getWikiData(marker);
             toggleBounce(marker);
@@ -182,20 +180,6 @@ let ViewModel = function() {
         }
     },this); 
 
-    function showListings() {
-        let bounds = new google.maps.LatLngBounds();
-        for (let i=0; i<markers.length; i++) {
-            markers[i].setMap(map);
-            bounds.extend(markers[i].position);
-        }
-    } // Close showListings
-
-    function hideListings() {  
-        for (let i=0; i<markers.length; i++) {
-            markers[i].setMap(null);
-        }
-    } // Close hideListings
-
     function toggleBounce(marker) {
         marker.setAnimation(google.maps.Animation.BOUNCE);
         setTimeout(function(){ marker.setAnimation(null); }, 750);
@@ -213,6 +197,11 @@ let ViewModel = function() {
             prevSearchData = $searchData;
             infoSet = true;
         }
+
+        var wikiReqTimeOut = setTimeout(function() {
+            alert("Wikipedia request failed.....");
+        }, 2000);
+        
         $.ajax({
             url: wikiURL,
             dataType: "jsonp",
@@ -225,6 +214,7 @@ let ViewModel = function() {
                         $('#info').append('<a href="' + titleInfo + '">' + 'More Info (Powered by wikipedia)' + '</a>')
 ;                        infoSet = true;
                     }
+                    clearTimeout(wikiReqTimeOut);
                 }
             }
         })
