@@ -1,14 +1,14 @@
 # Catalog Item
 
 ## Introduction
-This webpage is developed to check New York Torist Places.
+This webpage is developed to check New York Tourist Places.
 
 ## Installation
 Download repository from https://github.com/VasudhaLalit/Neighbourhood-Map.git
 Open the index.html
 
 ## Author
-#_**Vasudha Lalit**_
+_**Vasudha Lalit**_
 
 ## References
 1. Udacity
